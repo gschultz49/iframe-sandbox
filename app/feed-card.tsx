@@ -4,18 +4,28 @@
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
 import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card";
+import { toast } from "react-toastify";
 // import { Button } from "@/components/ui/button";
+import "react-toastify/dist/ReactToastify.css";
 
-export default function Component({ width = "300px", height = "350px" }) {
+export default function Component({ width = "300px", height = "500px" }) {
   return (
-    <Card style={{ width, height }}>
+    <Card className="block items-center max-w-96" style={{ width }}>
       <CardHeader>
-        <div className="flex items-center">
-          <div className="flex items-center space-x-2">
-            <FlagIcon className="h-6 w-6 text-[#bd1e59]" />
+        <div className="">
+          <div className="flex space-x-2">
+            <FlagIcon
+              className="h-6 w-6 text-[#bd1e59]"
+              onClick={() => toast("clicked on flag")}
+            />
             <div>
               <CardTitle>FixDex</CardTitle>
-              <p className="text-sm text-gray-500">248 followers</p>
+              <p
+                onClick={() => toast("clicked on follower count")}
+                className="text-sm text-gray-500"
+              >
+                248 followers
+              </p>
             </div>
           </div>
         </div>
@@ -23,7 +33,7 @@ export default function Component({ width = "300px", height = "350px" }) {
       <CardContent>
         <img
           alt="Content preview"
-          className="w-full"
+          className="w-full max-w-2xl"
           height="100"
           src="/coop.jpeg"
           style={{
@@ -31,8 +41,12 @@ export default function Component({ width = "300px", height = "350px" }) {
             objectFit: "cover",
           }}
           width="300"
+          onClick={() => toast("clicked on image")}
         />
-        <h3 className="my-4 text-lg font-semibold leading-tight">
+        <h3
+          className="my-4 text-lg font-semibold leading-tight"
+          onClick={() => toast("clicked on caption")}
+        >
           Ten ways to improve customer productivity
         </h3>
       </CardContent>

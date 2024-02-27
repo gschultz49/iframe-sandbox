@@ -1,67 +1,78 @@
+import { NextRequest } from "next/server";
+
 /* eslint-disable react/jsx-key */
-export default function Home() {
+export default function Home(request: NextRequest) {
   const tests = [
     {
       iframeRenderWidth: 400,
-      sourceWidth: 300,
+      sourceWidth: "300px",
       result: "iframe renders to full source size, looks as source expected",
       borderColor: "border-blue-500",
       sourceColor: "border-orange-500",
     },
     {
-      iframeRenderWidth: 800,
-      sourceWidth: 300,
+      iframeRenderWidth: 300,
+      sourceWidth: "300px",
       result: "iframe renders to full source size, looks as source expected",
       borderColor: "border-blue-500",
       sourceColor: "border-orange-500",
     },
     {
-      iframeRenderWidth: 200,
-      sourceWidth: 300,
-
+      iframeRenderWidth: 100,
+      sourceWidth: "300px",
       borderColor: "border-blue-500",
       sourceColor: "border-orange-500",
       result:
-        "clipping. This tells us the context in which the iframe is rendered is critical",
+        "Clipping or horizontal scrolling. This tells us the context in which the iframe is rendered is critical",
     },
     {
       iframeRenderWidth: 400,
-      sourceWidth: 150,
+      sourceWidth: "150px",
 
       borderColor: "border-blue-500",
       sourceColor: "border-orange-500",
-      result:
-        "source component compresses well, does not stretch to render size",
+      result: "source component compresses, does not stretch to render size",
     },
     {
       iframeRenderWidth: 200,
-      sourceWidth: 150,
-      result: "does not flex to container",
+      sourceWidth: "150px",
+      result: "source component compresses, does not flex to container",
       borderColor: "border-blue-500",
       sourceColor: "border-orange-500",
     },
+    {
+        iframeRenderWidth: 200,
+        sourceWidth: "max size",
+        result: "biggly",
+        borderColor: "border-blue-500",
+        sourceColor: "border-orange-500",
+      },
   ];
   return (
-    <main>
-      {tests.map((test) => {
-        return (
-          <div key={test.result} className="my-10">
-            <p>
-              {`${test.iframeRenderWidth}`}px iframe render width, source width{" "}
-              {`${test.sourceWidth}`}px
-            </p>
-            <p>
-              <b>Result:</b> {`${test.result}`}
-            </p>
-            <div className={`border-2 ${test.borderColor} p-4 flex`}>
-              <iframe
-                src={`/iframe${test.sourceWidth}`}
-                className={`flex border-2 ${test.sourceColor} w-[${test.iframeRenderWidth}px] h-[450px]`}
-              />
-            </div>
-          </div>
-        );
-      })}
-    </main>
+    <html lang="en">
+      <body>
+        <main>
+          <p>click on the components in the card to see emitted events</p>
+          {tests.map((test) => {
+            return (
+              <div key={test.result} className="my-10">
+                <p>Render: {`${test.iframeRenderWidth}`}</p>
+                <p>Source: {`${test.sourceWidth}`}</p>
+                <p>
+                  <b>Result:</b> {`${test.result}`}
+                </p>
+                <div className={`border-2 ${test.borderColor} p-4 flex`}>
+                  <iframe
+                    src={`/iframe?width=${test.sourceWidth}`}
+                    className={`flex border-2 ${test.sourceColor} w-full h-[500px]`}
+                    // style={{ width: test.iframeRenderWidth, height: 450 }}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </main>
+      </body>
+    </html>
   );
 }
