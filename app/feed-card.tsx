@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /**
  * v0 by Vercel.
  * @see https://v0.dev/t/89IuzpNd0R9
@@ -10,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function Component({ width = "300px", height = "500px" }) {
   return (
-    <Card className="block items-center max-w-96" style={{ width }}>
+    <Card className="block items-center max-w-96">
       <CardHeader>
         <div className="">
           <div className="flex space-x-2">

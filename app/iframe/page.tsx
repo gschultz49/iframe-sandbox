@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 
 import { NextRequest } from "next/server";
@@ -10,7 +11,7 @@ export default function iFrame(request: NextRequest) {
   const width = searchParams?.get("width") || "";
   return (
     <html lang="en">
-      <body className=" flex justify-evenly">
+      <body>
         <FeedCard width={width} />
         <ToastContainer />
       </body>

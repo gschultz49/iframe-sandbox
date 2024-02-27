@@ -41,12 +41,12 @@ export default function Home(request: NextRequest) {
       sourceColor: "border-orange-500",
     },
     {
-        iframeRenderWidth: 200,
-        sourceWidth: "max size",
-        result: "biggly",
-        borderColor: "border-blue-500",
-        sourceColor: "border-orange-500",
-      },
+      iframeRenderWidth: 500,
+      sourceWidth: "max size",
+      result: "biggly",
+      borderColor: "border-blue-500",
+      sourceColor: "border-orange-500",
+    },
   ];
   return (
     <html lang="en">
@@ -62,11 +62,13 @@ export default function Home(request: NextRequest) {
                   <b>Result:</b> {`${test.result}`}
                 </p>
                 <div className={`border-2 ${test.borderColor} p-4 flex`}>
-                  <iframe
-                    src={`/iframe?width=${test.sourceWidth}`}
-                    className={`flex border-2 ${test.sourceColor} w-full h-[500px]`}
-                    // style={{ width: test.iframeRenderWidth, height: 450 }}
-                  />
+                  <div className="flex justify-evenly w-full">
+                    <iframe
+                      src={`/iframe?width=${test.sourceWidth}`}
+                      className={`border-2 ${test.sourceColor} w-full max-w-96 h-[500px]`}
+                      style={{ width: test.iframeRenderWidth, height: 450 }}
+                    />
+                  </div>
                 </div>
               </div>
             );
