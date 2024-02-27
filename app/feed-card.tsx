@@ -5,6 +5,7 @@
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
 import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card";
+import { JSX, SVGProps } from "react";
 import { toast } from "react-toastify";
 // import { Button } from "@/components/ui/button";
 import "react-toastify/dist/ReactToastify.css";
@@ -55,7 +56,7 @@ export default function Component({ width = "300px", height = "500px" }) {
   );
 }
 
-function FlagIcon(props) {
+function FlagIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

@@ -1,12 +1,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 
-import { NextRequest } from "next/server";
 import FeedCard from "../feed-card";
 import { useSearchParams } from "next/navigation";
 import { ToastContainer } from "react-toastify";
 
-export default function iFrame(request: NextRequest) {
+export default function iFrame() {
   const searchParams = useSearchParams();
   const width = searchParams?.get("width") || "";
   return (

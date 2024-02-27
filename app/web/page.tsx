@@ -1,7 +1,5 @@
-import { NextRequest } from "next/server";
-
 /* eslint-disable react/jsx-key */
-export default function Home(request: NextRequest) {
+export default function Home() {
   const tests = [
     {
       iframeRenderWidth: 400,
