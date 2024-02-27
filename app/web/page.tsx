@@ -64,7 +64,7 @@ export default function Home() {
                     <iframe
                       src={`/iframe?width=${test.sourceWidth}`}
                       className={`border-2 ${test.sourceColor} w-full max-w-96 h-[500px]`}
-                      style={{ width: test.iframeRenderWidth, height: 450 }}
+                    //   style={{ width: test.iframeRenderWidth, height: 450 }}
                     />
                   </div>
                 </div>
